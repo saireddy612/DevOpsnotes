@@ -1,0 +1,35 @@
+|              Docker Command                          |                     Description                   |
+|------------------------------------------------------|---------------------------------------------------|
+| docker images                                        | will list the images                              |
+|------------------------------------------------------|---------------------------------------------------|
+| docker run nameofOS                                  | To run a particular operatingsystem in docker     |
+|------------------------------------------------------|---------------------------------------------------|
+| docker run -it --name containername Imagename        |cont up & running, user logged on to the container |
+|                                                      |i-interactive, t-terminal-   FOREGROUND MODE       |
+|------------------------------------------------------|---------------------------------------------------|
+| ctr+p+q                                              | Comeout of container and container will be running|
+|------------------------------------------------------|---------------------------------------------------|
+| exit                                                 | Comeout of container and container wont be running|
+|------------------------------------------------------|---------------------------------------------------|
+| docker exec -it containername command                | If the cursor is out of container, using it we can|
+|                                                      | get into the container. command-check the list    |
+|------------------------------------------------------|---------------------------------------------------|
+| docker run --name imagealias -d imagename            | conta will create, up & running, will not be atta-|
+|                                                      | ched to the terminal                              |
+|------------------------------------------------------|---------------------------------------------------|
+| docker rmi -f $(docker image -q)                     | Deleting multiple images at a time                |
+|------------------------------------------------------|---------------------------------------------------|
+| docker image rm imagename1 or ID1, imagename or ID2  | Deleting individual image with image name or ID nu|
+|------------------------------------------------------|---------------------------------------------------|
+| docker ps -a                                         | List the containers                               |
+|------------------------------------------------------|---------------------------------------------------|
+| docker rm -f containername                           | Delete a container                                |
+|------------------------------------------------------|---------------------------------------------------|
+| docker rm -f $(docker ps -aq)                        | Deleting multiple containers at a time            |
+|------------------------------------------------------|---------------------------------------------------|
+| docker run --name nameofimag -d -p 8989:80 imagename | As an internet user cann't access the web ports,  |
+|                                                      | with given ec2:port num, one can acces the image  |
+|------------------------------------------------------|---------------------------------------------------|
+| docker run --name imagealias -d -P imagename         | Docker will provide the port number               |
+|------------------------------------------------------|---------------------------------------------------|
+
