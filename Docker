@@ -30,6 +30,20 @@
 | docker run --name nameofimag -d -p 8989:80 imagename | As an internet user cann't access the web ports,  |
 |                                                      | with given ec2:port num, one can acces the image  |
 |------------------------------------------------------|---------------------------------------------------|
-| docker run --name imagealias -d -P imagename         | Docker will provide the port number               |
+| docker run --name imagealias -d -P imagename         | Docker will provide the port number, we can't get |
+|                                                      | port details if container had run                 |
 |------------------------------------------------------|---------------------------------------------------|
 
+Docker Volumes:
+1. NAMED VOLUME
+|------------------------------------------------------|---------------------------------------------------|
+| docker volume ls                                     | lists the volumes                                 |
+|------------------------------------------------------|---------------------------------------------------|
+|docker volume create volname                          | to create volume                                  |
+|------------------------------------------------------|---------------------------------------------------|
+|docker volume inspect volname                         | to know the path of the volname directory         |
+|------------------------------------------------------|---------------------------------------------------|
+|docker run -it --name imgalias -v myvol:/tmp imgname  | cont is up & run, volume is placed, cutsor on cont|
+|                                                      |if, we change data in tmp(container) it will       |
+|                                                      |reflects in the volumes(host directory)            |                            |
+|------------------------------------------------------|---------------------------------------------------|
