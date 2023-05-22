@@ -17,7 +17,7 @@
 | docker run --name imagealias -d imagename            | conta will create, up & running, will not be atta-|
 |                                                      | ched to the terminal                              |
 |------------------------------------------------------|---------------------------------------------------|
-| docker rmi -f $(docker image -q)                     | Deleting multiple images at a time                |
+| docker rmi -f $(docker images -q)                     | Deleting multiple images at a time               |
 |------------------------------------------------------|---------------------------------------------------|
 | docker image rm imagename1 or ID1, imagename or ID2  | Deleting individual image with image name or ID nu|
 |------------------------------------------------------|---------------------------------------------------|
@@ -45,5 +45,6 @@ Docker Volumes:
 |------------------------------------------------------|---------------------------------------------------|
 |docker run -it --name imgalias -v myvol:/tmp imgname  | cont is up & run, volume is placed, cutsor on cont|
 |                                                      |if, we change data in tmp(container) it will       |
-|                                                      |reflects in the volumes(host directory)            |                            |
+|                                                      |reflects in the volumes(host directory)
+|                                                      |myvol is basically
 |------------------------------------------------------|---------------------------------------------------|
