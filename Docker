@@ -17,7 +17,7 @@
 | docker run --name imagealias -d imagename            | conta will create, up & running, will not be atta-|
 |                                                      | ched to the terminal                              |
 |------------------------------------------------------|---------------------------------------------------|
-| docker rmi -f $(docker images -q)                     | Deleting multiple images at a time               |
+| docker rmi -f $(docker images -q)                    | Deleting multiple images at a time                |
 |------------------------------------------------------|---------------------------------------------------|
 | docker image rm imagename1 or ID1, imagename or ID2  | Deleting individual image with image name or ID nu|
 |------------------------------------------------------|---------------------------------------------------|
