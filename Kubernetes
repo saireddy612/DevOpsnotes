@@ -1,3 +1,34 @@
+*Importance of Container Orchestration:
+It does so many tasks , some of them
+1. provisioning and deployment of container among the virtual machinces is not automated, if we want to distribute 100s of 
+containers among VM's, it is very difficult to deploy manually. Hence, Container Orchestration tool make it easier to control 
+over it.
+2. Scaling up & down, removing container in order to spread the application load evenly.
+3. It can controll the movement of containers from one VM's to another VM's due to lack of resources in the VM.
+
+Container Orchestration solutions:
+1.Docker Swarm
+2.kubernetes
+3.Openshift
+4.Apache Mesos
+
+platforms:
+EKS: Elastic Kubernetes service
+GKE: Google Kubernetes Engine
+AKE: 
+
+Container Orchestration Tools:                                                                    Orchetration=Management
+1.Replicas
+2.Distribution
+3.Cluster mode
+4.Scale up & down
+5. High availability
+6. Rolling update
+
+
+
+
+
 Docker is the tool provides an image, which will be utilized by the kubernetes to create a container.
 POD: its a smallest deployable unit in kubernetes. it is basically an abstract of container, In kubernetes we won't create container directly,
 instead we look upon the POD. Multiple pods with same container is possible(ex: create a pods of nginx image). Each pod can have multiple
