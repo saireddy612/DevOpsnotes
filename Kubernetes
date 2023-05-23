@@ -25,11 +25,35 @@ Container Orchestration Tools:                                                  
 5. High availability
 6. Rolling update
 
+Diff between Docker Swarm & Kubernetes:
+|------------------------------------------------------------------|--------------------------------------------------------------|
+|                    Docker                                        |                    Kubernetes                                |
+|------------------------------------------------------------------|--------------------------------------------------------------|
+|> It can Orchestrate docker container only, container runtim      |> It can Orchestrate containers of other tols also, It has se-|
+|  is always docker                                                |perate container runtime interface and we will seee kubernetes|                           | 
+|                                                                  |is always used with docker                                    |
+|------------------------------------------------------------------|--------------------------------------------------------------|
+|>Manager node and worker node(multiple manager is possi)          |> Master and worker node (only one master node)               |
+|------------------------------------------------------------------|--------------------------------------------------------------|
+|>Containers are scheduled on manager as well as working node      |> Containers are by default scheduled on worker node          |
+|------------------------------------------------------------------|--------------------------------------------------------------|
+|>RAFT algorithm is responsible to conduct the orchestration activi|>various objects and controllers are respon for orch activi   |
+|------------------------------------------------------------------|--------------------------------------------------------------|
+|>There is no auto scaling                                         |>supports auto scaling with help of Horizontal pod autoscaler |
+|------------------------------------------------------------------|--------------------------------------------------------------|
+|>Single Line Commands                                             |>we can write object definition/manifest files -YAML          |
+|------------------------------------------------------------------|--------------------------------------------------------------|
+|>There is no free dashboard to display the service objects        |>It has dashboard to display all its objects and its manifest |
+|------------------------------------------------------------------|--------------------------------------------------------------|
+|>In docker swarm, data of container sis preserved on vm itself    |>It can preserve data of container outside the cluster        |
+|                                                                  | like PV:persistent volume, PVC: persistent volume claim      |
+|------------------------------------------------------------------|--------------------------------------------------------------|
 
-
-
-
-Docker is the tool provides an image, which will be utilized by the kubernetes to create a container.
+Docker tool:
+It is basically tool which uses the dockerhub images and converts into the container in a single VM.
+Kubernetes tool:
+It uses the Docker for collecting the image and will create a container in multiple  VMs based upon the available resources on 
+each VMs.
 POD: its a smallest deployable unit in kubernetes. it is basically an abstract of container, In kubernetes we won't create container directly,
 instead we look upon the POD. Multiple pods with same container is possible(ex: create a pods of nginx image). Each pod can have multiple
 containers that dependent on each other.
