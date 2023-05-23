@@ -1,1 +1,49 @@
+Docker is the tool used to create a container using kubernetes.
+POD: its a smallest deployable unit in kubernetes. it is basically an abstract of container, In kubernetes we won't create container directly,
+instead we look upon the POD. Multiple pods with same container is possible(ex: create a pods of nginx image).
+NODE: VM's in the cluster where docker and kubernete is installed.
+Replica: same pods with same container and image.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
