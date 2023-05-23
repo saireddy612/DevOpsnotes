@@ -52,8 +52,26 @@ Diff between Docker Swarm & Kubernetes:
 Docker tool:
 It is basically tool which uses the dockerhub images and converts into the container in a single VM.
 Kubernetes tool:
-It uses the Docker for collecting the image and will create a container in multiple  VMs based upon the available resources on 
+It uses the Docker for collecting the image and will create a Multiple containers in multiple  VMs based upon the available resources on 
 each VMs.
+Docker swarm:
+It does the same to kubernetes except some fucntionalities like autoscaling, YAML, Single Line Command.
+                                 
+                                 Master
+                       |-------------------------------------------------------------------------------------------------------------|
+                       |1. Apiserver: principle component, will recieve requests from kubectl to create containers
+                       |2. Schedular: it will trac the container. It will decide and tell to Apiserver where to create containers
+                       |
+                       |
+                       |
+                       |
+                       
+                       
+                       |-------------------------------------------------------|
+                       |kubelet:
+                       |Apiserver will send request kubelet to create particular
+                       |number of containers. 
+                       |kubelet will pull image from docker
 POD: its a smallest deployable unit in kubernetes. it is basically an abstract of container, In kubernetes we won't create container directly,
 instead we look upon the POD. Multiple pods with same container is possible(ex: create a pods of nginx image). Each pod can have multiple
 containers that dependent on each other.
