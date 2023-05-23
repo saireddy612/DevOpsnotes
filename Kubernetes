@@ -51,6 +51,22 @@ Trainers:
 tainings:
   -type: cloud
    name:
+ 
+ YAML 
+ > vim pod-definition.yml
+ 
+ apiversion: v1 it is a pod library
+ metadata: consist of label, names and all
+ 
+> kubectl create -f pod-definition.yml.....f is file
+> kubectl get pods
+>kubectl get pods -o wide.......to get the schedule details
+>kkubectl describe pod pod1 |less.....will describes the pod details
+
+
+tommorow trouble shooting pod errors.
+ 
+ 
   
    
 
