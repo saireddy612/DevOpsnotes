@@ -57,21 +57,25 @@ each VMs.
 Docker swarm:
 It does the same to kubernetes except some fucntionalities like autoscaling, YAML, Single Line Command.
                                  
-                                 Master
+                                                                        Master
                        |-------------------------------------------------------------------------------------------------------------|
-                       |1. Apiserver: principle component, will recieve requests from kubectl to create containers
-                       |2. Schedular: it will trac the container. It will decide and tell to Apiserver where to create containers
+                       |1. Apiserver: principle component, will recieve requests from kubectl to create containers                   |
+                       |2. Schedular: it will trac the container. It will decide and tell to Apiserver where to create containers    |
+                       |3. ETCD:It has complete information about the cluster like IP address etc.,                                  |
+                       |4. Controller Manager: deploy,scaling up & down will manage
                        |
-                       |
-                       |
-                       |
+                       |-------------------------------------------------------------------------------------------------------------|
                        
-                       
-                       |-------------------------------------------------------|
-                       |kubelet:
-                       |Apiserver will send request kubelet to create particular
-                       |number of containers. 
-                       |kubelet will pull image from docker
+                                    worker node-1                                            worker node-2
+                       |--------------------------------------------------------|  |-------------------------------------------------|
+                       |kubelet:                                                |  |kubelet,kubeproxy                                |
+                       |Apiserver will send request kubelet to create particular|  |                                                 |
+                       |number of containers.                                   |  |                                                 |
+                       |kubelet will pull image from docker                     |  |                                                 |
+                       |kubeproxy:                                              |  |                                                 |
+                       |it will gives set of network rules, using this user     |  |                                                 |
+                       |can access data                                         |  |                                                 |
+                       |--------------------------------------------------------|  |-------------------------------------------------|
 POD: its a smallest deployable unit in kubernetes. it is basically an abstract of container, In kubernetes we won't create container directly,
 instead we look upon the POD. Multiple pods with same container is possible(ex: create a pods of nginx image). Each pod can have multiple
 containers that dependent on each other.
