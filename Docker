@@ -35,7 +35,7 @@
 |------------------------------------------------------|---------------------------------------------------|
 
 Docker Volumes:
-1. NAMED VOLUME
+1. NAMED VOLUMES
 |------------------------------------------------------|---------------------------------------------------|
 | docker volume ls                                     | lists the volumes                                 |
 |------------------------------------------------------|---------------------------------------------------|
@@ -45,6 +45,47 @@ Docker Volumes:
 |------------------------------------------------------|---------------------------------------------------|
 |docker run -it --name imgalias -v myvol:/tmp imgname  | cont is up & run, volume is placed, cutsor on cont|
 |                                                      |if, we change data in tmp(container) it will       |
-|                                                      |reflects in the volumes(host directory)
-|                                                      |myvol is basically
+|                                                      |reflects in the volumes(host directory)            |
+|                                                      |myvol is basically                                 |
 |------------------------------------------------------|---------------------------------------------------|
+2. BIND VOLUMES
+It is similar to the named volumes, except the host repository. Bind volumes uses the github repositories,
+host will clone the github repositories using git and will be directed to the image user directory.
+|----------------------------------------------------------------------------------------------------------|
+|git init                                              |Terminal will start the git                        |
+|------------------------------------------------------|---------------------------------------------------|
+|git clone githubhttppath                              |It will clone the particular github to terminal    |
+|------------------------------------------------------|---------------------------------------------------|
+|docker run -it --name imgalias -v clonedpath:imgdirect|container will be up & run, img will take the clon |
+|ory imgname                                           |ed data into the img directory                     |
+|------------------------------------------------------|---------------------------------------------------|
+
+Customized Docker file process:
+Initially, create a directory and get into the directory and create a file name "dockerfile" (name should  
+always be the same and its mandatory) and crea
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
