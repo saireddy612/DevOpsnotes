@@ -113,7 +113,22 @@ YAML format to save single value:
 trainer: Sai
 training: devops
 time: 8.30PM IST
-day: weekday                                                                          [YAMLLINT its a website, where we can validate the yaml]
+day: weekday                                                                     [YAMLLINT its a website, where we can validate the yaml]
+
+Create a pod in kubernetes:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+  labels:
+    author: sonal
+    env: dev
+    app: webserver
+spec:
+ containers:
+  - name: c1
+    image: nginx
 
 YAML format to save multiple values:
 company: Edureka
@@ -158,10 +173,27 @@ tainings:
  |-----------------------------------------|
  apiversion: v1 it is a pod library
  metadata: consist of label, names and all
+|-------------------------------------------------|------------------------------------------------------------|
+|kubectl delete pod pod1                          | Deleting a pod                                             |
+|--------------------------------------------------------------------------------------------------------------|
+|
 
 
-tommorow trouble shooting pod errors.
- 
+
+
+ReplicaSet- Controller:
+This object is used to create a multiple pods which are same/replicas.
+specifications:
+>How many replicas/pods(having same container-duplicates)
+>What container should be on the POD
+>
+Service Object: Port Mapping
+It is the method a user can communicate with a POD
+It is way one pod can talk to another pod
+Nodeport: which access the port deatils of the replicas and IP address range of 30,000 -30,
+
+
+selector: before creating replica, it will run the query
  
   
    
