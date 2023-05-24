@@ -171,12 +171,22 @@ tainings:
  |  kubectl get pod -o wide                |
  |  kubectl describe pod | less            |
  |-----------------------------------------|
+ > Each pod consist of multiple containers with single port deatils and containers in a pod will share the pod 
+ IP port deatis but when multiple containers in a pods shares the IP details it will leads to backoff error.
+ hence, we need to find which containers causing the problems with looking at log details.
  apiversion: v1 it is a pod library
  metadata: consist of label, names and all
-|-------------------------------------------------|------------------------------------------------------------|
-|kubectl delete pod pod1                          | Deleting a pod                                             |
-|--------------------------------------------------------------------------------------------------------------|
-|
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl get nodes                                                 | It will list the details of nodes                              |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl get nodes -o wide                                         | It will give full details about nodes                          |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl create -f file.yml                                        | It will create a pod
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl delete pod pod1                                           |Deleting a pod                                                  |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl describe pod | less                                       | It will describe the pod details                               |
+|------------------------------------------------------------------|----------------------------------------------------------------|
 
 
 
