@@ -176,9 +176,11 @@ tainings:
 |------------------------------------------------------------------|----------------------------------------------------------------|
 |kubectl get nodes                                                 | It will list the details of nodes                              |
 |------------------------------------------------------------------|----------------------------------------------------------------|
-|kubectl get nodes -o wide                                         | It will give full details about nodes                          |
+|kubectl get pods                                                  | It will list the details of nodes                              |
 |------------------------------------------------------------------|----------------------------------------------------------------|
-|kubectl create -f file.yml                                        | It will create a pod
+|kubectl get pod -o wide                                           | It will give full details about pods                           |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl create -f file.yml                                        | It will create a pod                                           |
 |------------------------------------------------------------------|----------------------------------------------------------------|
 |kubectl delete pod pod1                                           |Deleting a pod                                                  |
 |------------------------------------------------------------------|----------------------------------------------------------------|
@@ -234,8 +236,26 @@ spec:
     - targetPort: 80
       port: 80
       
-s
-
+VOLUMES:
+ Generally, the container details going to store physically on the working laptop or machine, if the machine is going
+ to crash then, there is a chance to lose data. Hence, we need to preserve the data using volume concept. This storage
+ of volume could get by raising a ticket to IT Team as I need 30Gb or 50 Gb of storage for my project. Based on the 
+ available resources IT Team will allow the storage.
+ When it comes to kubernetes, it consists of multiple replicas and pods with containers. Now, storage admins will create
+ or configure the storage drivers (google, Azure etc.,) volumes[NFS, glusterfs, persistent Disk, local hostpath]
+ kubernetes admin should define the type of volume,capacity,location,access. ex: persistent volume object. Since, the pod cann't
+ store the data into the volume directly, it will use the help of Persistent Volume Claim object by raising the ticker
+ that grant a pod access to a Persistent Volume.
+ 
+ 
+ POD--------------------> persistentVolumeClaim----------------> persistentVolume
+ (mountpoint)(GCP)
+ 
+ Access Mode:
+ what kind of access do we have to the volume:
+ READ WRITE Once
+ READ WRITE MANY
+ READ ONLY MANY
 
 
  
