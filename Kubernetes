@@ -190,6 +190,8 @@ tainings:
 |------------------------------------------------------------------|----------------------------------------------------------------|
 |kubectl delete rs replicasname                                    | Deleting replicas                                              |
 |------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl delete replicaset --all                                   | Deleting all replicas                                          |
+|------------------------------------------------------------------|----------------------------------------------------------------|
 |kubectl exec -it podname -- bash                                  | to enter into the pod,podname get kubectl get all cmnd         |
 |------------------------------------------------------------------|----------------------------------------------------------------|
 |kubectl get pods --show-labels                                    | shows the labels of the pods                                   |
@@ -197,6 +199,21 @@ tainings:
 |apt-get update && apt-get install curl -y                         | creating curl                                                  |
 |------------------------------------------------------------------|----------------------------------------------------------------|
 |kubectl describe service servicename                              | Describes the full details of a service                        |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|curl serviceIPaddress                                             | to access the pod data by user using nodeport service object,  |
+|                                                                  |we should be inside the nodeport service, IP will kubectlgetall |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl create -f website                                         | using website we can create replicas or pods                   |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl get deployment nameofreplicawithserver -o wide            | It will create and deploy the replica with nopeport serviceobjt|
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl set image deployment naofrepliser app=kubeservename:v2    |It will update a new image using the replica's yml filename.    |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl rollout undo deployment nameofreplicawithserver           | It will go back to the old version of replica                  |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl rollout history deployment nameofreplicawithserver        | shows the versions history                                     |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl delete all --all                                          | To delete all the contents irrespectively                      |
 |------------------------------------------------------------------|----------------------------------------------------------------|
 |
 
@@ -207,7 +224,28 @@ This object is used to create a multiple pods which are same/replicas.
 specifications:
 >How many replicas/pods(having same container-duplicates)
 >What container should be on the POD
->
+Replicaset yml code example:
+
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+ name: myrs
+spec:
+ replicas: 3 # desired number of PODs
+ selector: # query to select pods with matching labels
+  matchLabels:
+   type: webserver
+ template: #heretemplate is Pod template,i.e.what should be on the POD,you are writing Pod details
+  metadata:
+   labels: # here labels is key and value given by user to group similar pods
+    type: webserver
+    app: java
+    author: sonal
+  spec: # this is pod specification
+   containers:
+    - name: c1
+      image: nginx
+      
 Service Object: Port Mapping
 Service object basically provides the communication between the user and pods and it is helpful for portmapping.
 It consists of two types 1. Nodeport, 2. ClusterIP.
@@ -237,7 +275,69 @@ spec:
   ports:
     - targetPort: 80
       port: 80
-      
+Example for creating a service object for Nodeport type:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testpod
+spec:
+  containers:
+    - name: c1
+      image: ubuntu
+      command: ["bash", "-c", "sleep 6000"]
+*Deployment Object:
+> Used to create a Replicas
+> Maintains the Rolling update and Rollback feature.
+
+Let's see a scenarion:
+A replica with 3 pods got created with a version app:v1. Now, the operator wants to update the one of the images in the
+pod, he/she can not go and update the pod directly, instead a new replicaset get created with a new version of
+app:v2 with deleted the old replica's pods individually. If we don't want the new image, we can rollback to the original
+version to v1.
+
+combination of creating replicas and nodeport service example for deployment:
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: kubeserve
+spec:
+  replicas: 3
+  minReadySeconds: 10 # wait for 45 sec before going to deploy next pod
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1  
+      maxSurge: 1        # max number of pods to run for the deployment
+  selector:
+    matchLabels:
+      app: kubeserve
+  template:
+    metadata:
+      name: kubeserve
+      labels:
+        app: kubeserve
+    spec:
+      containers:
+       - name: app
+         image: leaddevops/kubeserve:v1
+        
+---
+kind: Service
+apiVersion: v1
+metadata:
+   name: kubeserve-svc
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+  selector: 
+    app: kubeserve
+
+
+
 VOLUMES:
  Generally, the container details going to store physically on the working laptop or machine, if the machine is going
  to crash then, there is a chance to lose data. Hence, we need to preserve the data using volume concept. This storage
