@@ -184,6 +184,8 @@ tainings:
 |------------------------------------------------------------------|----------------------------------------------------------------|
 |kubectl delete pod pod1                                           |Deleting a pod                                                  |
 |------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl delete pods --all                                         |Deleting all pod                                                |
+|------------------------------------------------------------------|----------------------------------------------------------------|
 |kubectl describe pod | less                                       | It will describe the pod details                               |
 |------------------------------------------------------------------|----------------------------------------------------------------|
 |kubectl delete rs replicasname                                    | Deleting replicas                                              |
@@ -253,7 +255,10 @@ VOLUMES:
  
  Access Mode:
  what kind of access do we have to the volume:
- READ WRITE Once
+ READ WRITE Once:
+ volume get created on a particular node and the pods on that node will use the volume within the node.
+ *hostpath:
+   path: /tmp/data
  READ WRITE MANY
  READ ONLY MANY
 
