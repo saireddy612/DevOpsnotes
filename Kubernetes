@@ -83,11 +83,6 @@ It does the same to kubernetes except some fucntionalities like autoscaling, YAM
  number of replicas to be running. Kubeproxy will allows port mapping to acces the containers, two containers can talk using the kubeproxy.
 
 > Initally create a cloud.console account with card
-|------------------------------------------------------------------|----------------------------------------------------------------|
-|kubectl get nodes                                                 | It will list the details of nodes                              |
-|------------------------------------------------------------------|----------------------------------------------------------------|
-|kubectl get nodes -o wide                                         | It will give full details about nodes                          |
-|------------------------------------------------------------------|----------------------------------------------------------------|
 
 POD: its a smallest deployable unit in kubernetes. it is basically an abstract of container, In kubernetes we won't create container directly,
 instead we look upon the POD. Multiple pods with same container is possible(ex: create a pods of nginx image). Each pod can have multiple
@@ -187,7 +182,13 @@ tainings:
 |------------------------------------------------------------------|----------------------------------------------------------------|
 |kubectl describe pod | less                                       | It will describe the pod details                               |
 |------------------------------------------------------------------|----------------------------------------------------------------|
-
+|kubectl delete rs replicasname                                    | Deleting replicas                                              |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl exec -it podname -- bash                                  | to enter into the pod,podname get kubectl get all cmnd         |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|kubectl get pods --show-labels                                    | shows the labels of the pods                                   |
+|------------------------------------------------------------------|----------------------------------------------------------------|
+|
 
 
 
