@@ -171,6 +171,8 @@ tainings:
  hence, we need to find which containers causing the problems with looking at log details.
  apiversion: v1 it is a pod library
  metadata: consist of label, names and all
+ selector: before creating replica, it will run the query
+
 |------------------------------------------------------------------|----------------------------------------------------------------|
 |kubectl get nodes                                                 | It will list the details of nodes                              |
 |------------------------------------------------------------------|----------------------------------------------------------------|
@@ -188,6 +190,8 @@ tainings:
 |------------------------------------------------------------------|----------------------------------------------------------------|
 |kubectl get pods --show-labels                                    | shows the labels of the pods                                   |
 |------------------------------------------------------------------|----------------------------------------------------------------|
+|apt-get update && apt-get install curl -y                         | creating curl                                                  |
+|------------------------------------------------------------------|----------------------------------------------------------------|
 |
 
 
@@ -199,12 +203,39 @@ specifications:
 >What container should be on the POD
 >
 Service Object: Port Mapping
-It is the method a user can communicate with a POD
-It is way one pod can talk to another pod
-Nodeport: which access the port deatils of the replicas and IP address range of 30,000 -30,
+Service object basically provides the communication between the user and pods and it is helpful for portmapping.
+It consists of two types 1. Nodeport, 2. ClusterIP.
+1. Nodeport:
+   It allows user to connect with the pods via browser using port address, and it has range of 30000-37676
+2. ClusterIP:
+   It allows to exchange or to process the communication between pods. It is a default service object run by 
+   kubernetes with constant port number.
+   
+Let's see with a scenario:
+An an enduser wants to connect with a pod1. He can contact the pod1 through frontend app which is basically a pod.
+endsuer could communicate with frontend app using the Nodeport. Now, the nodeport will contact the pod1. In worst
+cases pod1 get deleted and kubernetes prompty creates the pod1 but the conflict is the IP address of pod1 changed 
+now. Since, the frontend app connected pod1 through the deleted pod1 IP address. In order to overcome this issue
+ClusterIP came into picture i.e. static IP address and port number.
+
+Example for creating a service object for ClusterIP type:
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservice1
+spec:
+  type: ClusterIP
+  selector:
+    type: webserver
+  ports:
+    - targetPort: 80
+      port: 80
+      
+s
 
 
-selector: before creating replica, it will run the query
+
  
   
    
