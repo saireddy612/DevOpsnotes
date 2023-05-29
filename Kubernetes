@@ -361,6 +361,23 @@ VOLUMES:
    path: /tmp/data
  READ WRITE MANY
  READ ONLY MANY
+ 
+ Namespace:
+ >It is used to mention a pod with specific name details which will help to recognize while performing delete action.
+ >It will be given in the yml file, metadata.
+ 
+ CONTINOUS MONITORING:
+ > Prometheus: opensource tool
+ Architecture:
+ 1. Retrieval
+ 2. Storage
+ 3. HTP Server
+ 4. Prometheus (Web GUI)
+ 5. Alert Manager
+ Operation: The retrieval take the metric data(Counter, Histogram, Gauges, Summary) from the kubernetes and based on the time stand Storage will stores the
+ data, HTTP server will provides the dta to the user from Storage.
+ Graphana
+ 
 
 
  
